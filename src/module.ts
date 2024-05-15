@@ -15,6 +15,12 @@ const log = logger.withTag('nuxt:hub')
 
 export interface ModuleOptions {
   /**
+   * Set `true` to enable machine learning models for the project.
+   *
+   * @default false
+   */
+  ai?: boolean
+  /**
    * Set `true` to enable the analytics for the project.
    *
    * @default false
@@ -108,6 +114,7 @@ export default defineNuxtModule<ModuleOptions>({
       remote: remoteArg || process.env.NUXT_HUB_REMOTE,
       remoteManifest: undefined,
       // NuxtHub features
+      ai: false,
       analytics: false,
       blob: false,
       cache: false,

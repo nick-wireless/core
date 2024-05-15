@@ -2,7 +2,7 @@ import { addCustomTab } from '@nuxt/devtools-kit'
 import type { Nuxt } from 'nuxt/schema'
 import { stringifyTOML } from 'confbox'
 
-export function generateWrangler(hub: { kv: boolean, database: boolean, blob: boolean, cache: boolean, analytics: boolean }) {
+export function generateWrangler(hub: { ai: boolean, kv: boolean, database: boolean, blob: boolean, cache: boolean, analytics: boolean }) {
   const wrangler: { [key: string]: any } = {}
 
   if (hub.analytics) {
@@ -41,6 +41,12 @@ export function generateWrangler(hub: { kv: boolean, database: boolean, blob: bo
       database_name: 'default',
       database_id: 'default'
     }]
+  }
+
+  if (hub.ai) {
+    wrangler['ai'] = {
+      binding: 'AI'
+    }
   }
 
   return stringifyTOML(wrangler)
